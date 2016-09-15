@@ -11,6 +11,7 @@ $(document).ready(function(){
     dataType: 'jsonp',
     success: function(data){
       $('body').append("<p>"+data+"</p>");
+      console.log(data);
     },
     error: function(data){alert("fail");}
   });
