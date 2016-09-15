@@ -5,9 +5,9 @@
 
 <script>
 $(document).ready(function(){
-  $.get("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a", function(data) {
+  $.get("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a", function(data){
     alert(data);
-  });
+  }, jsonp);
   alert('Test the shit out of this');
 });
 </script>
