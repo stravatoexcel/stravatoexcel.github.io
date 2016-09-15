@@ -18,9 +18,9 @@ $(document).ready(function(){
         $.each(this, function(k , v) {
             var cell = tbl_row.insertCell();
             cell.appendChild(document.createTextNode(v.toString()));
-        })        
+        });        
         odd_even = !odd_even;               
-    })
+    });
     $("#target_table_id").appendChild(tbl_body);
 
     },
