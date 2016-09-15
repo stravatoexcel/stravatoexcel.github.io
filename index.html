@@ -5,7 +5,11 @@
 
 <script>
 $(document).ready(function(){
-  $.ajax({
+  $.get("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a", function(data){
+    alert(data);
+  });
+  
+ /* $.ajax({
     type: 'GET',
     url: 'https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?',
     dataType: 'jsonp',
@@ -16,7 +20,7 @@ $(document).ready(function(){
       console.log(data);
     },
     error: function(data){alert("fail");}
-  });
+  }); */
 });
 </script>
 </head>
