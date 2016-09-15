@@ -5,7 +5,7 @@
 
 <script>
 $(document).ready(function(){
-  $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a", function(data){
+  $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(data){
     alert(data);
   });
   
