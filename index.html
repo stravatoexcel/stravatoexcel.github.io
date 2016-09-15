@@ -8,13 +8,12 @@
 
 <div class="main" ng-controller="MainController">
 
-  <h1>{{ fiveDay.city_name }}</h1>
+  <li ng-repeat="act in activities | filter:query | orderBy:orderProp">
+    <pre>{{activities | json }}</pre>
+  </li>
 
 </div>
 
-<li ng-repeat="act in activities | filter:query | orderBy:orderProp">
-    <pre>{{activities | json }}</pre>
-</li>
 
 
 <table style="width:100%">
