@@ -10,19 +10,7 @@ $(document).ready(function(){
     url: 'https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?',
     dataType: 'jsonp',
     success: function(data){
-      var tbl_body = document.createElement("tbody");
-      var odd_even = false;
-      $.each(data, function() {
-        var tbl_row = tbl_body.insertRow();
-        tbl_row.className = odd_even ? "odd" : "even";
-        $.each(this, function(k , v) {
-            var cell = tbl_row.insertCell();
-            cell.appendChild(document.createTextNode(v.toString()));
-        });        
-        odd_even = !odd_even;               
-    });
-    $("#target_table_id").appendChild(tbl_body);
-
+      $('body').append(data);
     },
     error: function(data){alert("fail");}
   });
