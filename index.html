@@ -8,6 +8,14 @@
 <script>
 $(document).ready(function(){
   $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(data){
+    $('#myTable').dataTable({
+      data: data,
+      columns: [
+        {data: 'id'},
+        {data: 'distance'}
+      ]
+    });
+    
     console.log(JSON.stringify(data));
   });
   
@@ -33,26 +41,18 @@ $(document).ready(function(){
 
 <div></div>
 
-<table id="empTable" class="display" width="100%" cellspacing="0">
+<table id="myTable" class="display" width="100%" cellspacing="0">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Designation</th>
-            <th>Office</th>
-            <th>Extension</th>
-            <th>Joining Date</th>
-            <th>Salary</th>
+            <th>Id</th>
+            <th>Distance</th>
         </tr>
     </thead>
 
     <tfoot>
         <tr>
-            <th>Name</th>
-            <th>Designation</th>
-            <th>Office</th>
-            <th>Extension</th>
-            <th>Joining Date</th>
-            <th>Salary</th>
+            <th>Id</th>
+            <th>Distance</th>
         </tr>
     </tfoot>
 </table>
