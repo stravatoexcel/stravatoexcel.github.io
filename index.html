@@ -12,8 +12,11 @@
 
 </div>
 
+<li ng-repeat="act in activities | filter:query | orderBy:orderProp">
+    <pre>{{activities | json }}</pre>
+</li>
 
-<h1>Hello World Mothafuckers</h1>
+
 <table style="width:100%">
    <tr>
     <td>de joggel</td>

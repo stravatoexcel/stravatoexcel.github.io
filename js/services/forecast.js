@@ -1,9 +1,16 @@
-app.factory('forecast', ['$http', function($http) {
-  return $http.get('https://s3.amazonaws.com/codecademy-content/courses/ltp4/forecast-api/forecast.json')
-  .success(function(data) {
-    return data;
-  })
-  .error(function(err) {
-    return err;
-  });
-}]);
+/* Services */
+
+var access_token = "7bdff1ce8562906d40570028677dbbc4d147769a";
+
+app.factory('StravaActiv',function($resource) {
+	return $resource('https://www.strava.com/api/v3/athlete/activities?access_token=' + access_token, {}, {
+        getJSONP: {
+          method: 'JSONP',
+          isArray: true,
+          params: {
+              callback: 'JSON_CALLBACK'
+          }
+        }
+      });
+
+});
