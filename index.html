@@ -7,9 +7,11 @@
 <body ng-App="strava2excel">
 
 <div class="main" ng-controller="MainController">
-
+  <p>{{activities | json }}</p>
+  <p>{{ act | json }}</p>
   <li ng-repeat="act in activities | filter:query | orderBy:orderProp">
     <pre>{{activities | json }}</pre>
+    <pre>{{ act | json }}</pre>
   </li>
 
 </div>
