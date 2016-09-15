@@ -10,7 +10,9 @@ $(document).ready(function(){
     url: 'https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?',
     dataType: 'jsonp',
     success: function(data){
-      $('body').append("<p>"+data+"</p>");
+       $.each(result, function(i, field){
+        $("div").append(field + " ");
+       });
       console.log(data);
     },
     error: function(data){alert("fail");}
