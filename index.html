@@ -15,13 +15,15 @@
       buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
       paging: false,
       searching: false,
+      ordering: false,
       columns: [
-        {data: 'name'},
-        {data: 'distance'}
+        {data: 'id'},
+        {data: 'distance'},
+        {data: 'time'}
       ]
     });
     
-    /*console.log(JSON.stringify(data));*/
+    console.log(JSON.stringify(data));
   });
   
  /* $.ajax({
@@ -41,16 +43,13 @@
 </head>
 
 <body>
-
-<h1>no blank</h1>
-
-<div></div>
-
+  
 <table id="myTable" class="display" cellspacing="0">
     <thead>
         <tr>
-            <th>Name</th>
+            <th>ID</th>
             <th>Distance</th>
+            <th>Time</th>
         </tr>
     </thead>
 
