@@ -9,7 +9,16 @@
 <script>
 
   $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(data){
-    $('#myTable').dataTable({
+    var tr;
+    for (var i = 0; i < data.length; i++) {
+        tr = $('<tr/>');
+        tr.append("<td>" + data[i].id + "</td>");
+        tr.append("<td>" + data[i].distance + "</td>");
+        tr.append("<td>" + data[i].moving_time + "</td>");
+        $('table').append(tr);
+    }
+    
+    /*$('#myTable').dataTable({
       data: data,
       deferRender: true,
       dom: 'Bt',
@@ -22,7 +31,7 @@
         {data: 'distance'},
         {data: 'moving_time'}
       ]
-    });
+    });*/
     
     console.log(JSON.stringify(data));
   });
