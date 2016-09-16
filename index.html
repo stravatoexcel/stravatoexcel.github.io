@@ -10,7 +10,6 @@ $(document).ready(function(){
   $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(data){
     $('#myTable').dataTable({
       data: data,
-      serverSide: true,
       dom: 'Bt',
       buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
       paging: false,
@@ -45,7 +44,7 @@ $(document).ready(function(){
 
 <div></div>
 
-<table id="myTable" cellspacing="0">
+<table id="myTable" class="display" cellspacing="0">
     <thead>
         <tr>
             <th>Name</th>
