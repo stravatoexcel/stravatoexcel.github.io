@@ -11,6 +11,7 @@ $(document).ready(function(){
     $('#myTable').dataTable({
       data: data,
       buttons: ['excel'],
+      paging: false,
       columns: [
         {data: 'name'},
         {data: 'distance'}
