@@ -6,7 +6,7 @@
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
 
 <script>
-$(document).ready(function(){
+
   $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(data){
     $('#myTable').dataTable({
       data: data,
@@ -36,7 +36,7 @@ $(document).ready(function(){
     },
     error: function(data){alert("fail");}
   }); */
-});
+
 </script>
 </head>
 
