@@ -11,7 +11,7 @@ $(document).ready(function(){
     $('#myTable').dataTable({
       data: data,
       dom: 'Bt',
-      buttons: ['excel'],
+      buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
       paging: false,
       columns: [
         {data: 'name'},
