@@ -8,7 +8,7 @@
 <script>
 $(document).ready(function(){
   $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(data){
-    $('#myTable').dataTable({
+    /*$('#myTable').dataTable({
       data: data,
       deferRender: true,
       dom: 'Bt',
@@ -19,9 +19,22 @@ $(document).ready(function(){
         {data: 'name'},
         {data: 'distance'}
       ]
-    });
+    });*/
     
-    console.log(JSON.stringify(data));
+    var tbl_body = "";
+    var odd_even = false;
+    $.each(data, function() {
+        var tbl_row = "";
+        $.each(this, function(k , v) {
+            tbl_row += "<td>"+v+"</td>";
+        })
+        tbl_body += "<tr class=\""+( odd_even ? "odd" : "even")+"\">"+tbl_row+"</tr>";
+        odd_even = !odd_even;               
+    })
+    $("#target_table_id tbody").html(tbl_body);
+    
+    
+    /*console.log(JSON.stringify(data));*/
   });
   
  /* $.ajax({
