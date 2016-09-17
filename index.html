@@ -13,8 +13,8 @@
         tr.append("<td>" + data[i].name + "</td>");
         tr.append("<td>1</td>");
         var kilometer = data[i].distance)/1000;
-        var km = kilometer.toFixed(2);
-        tr.append("<td>" + km + "</td>");
+        //var km = kilometer.toFixed(2);
+        tr.append("<td>" + kilometer + "</td>");
         tr.append("<td>" + Math.round(data[i].total_elevation_gain) + "</td>");
         tr.append("<td></td>");
         tr.append("<td>" + Math.round(data[i].moving_time/60) + "</td>");
