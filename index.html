@@ -10,7 +10,7 @@ $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1c
 
     var tr;
     for (var i = 0; i < data.length; i++) {
-        
+
         tr = $('<tr/>');
         var date = new Date(data[i].start_date);
         var month = date.getMonth()+1;
@@ -40,11 +40,11 @@ $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1c
         console.log(data);
         console.log(zone);
 
-        var zone1 = Math.round(zone[0].distribution_buckets[0].time/60);
-        var zone2 = Math.round(zone[0].distribution_buckets[1].time/60);
-        var zone3 = Math.round(zone[0].distribution_buckets[2].time/60);
-        var zone4 = Math.round(zone[0].distribution_buckets[3].time/60);
-        var zone5 = Math.round(zone[0].distribution_buckets[4].time/60);
+        var zone1 = Math.round(data[0].distribution_buckets[0].time/60);
+        var zone2 = Math.round(data[0].distribution_buckets[1].time/60);
+        var zone3 = Math.round(data[0].distribution_buckets[2].time/60);
+        var zone4 = Math.round(data[0].distribution_buckets[3].time/60);
+        var zone5 = Math.round(data[0].distribution_buckets[4].time/60);
 
         tr.append("<td>" + zone1 + "</td>");
         tr.append("<td>" + zone2 + "</td>");
