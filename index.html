@@ -24,7 +24,7 @@
         tr.append("<td>" + Math.round(data[i].average_heartrate) + "</td>");
         tr.append("<td>" + Math.round(data[i].max_heartrate) + "</td>");
         tr.append("<td></td>");
-        $getJSON("https://www.strava.com/api/v3/activities/"+ data[i].id +"/zones?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(zone){
+        $.getJSON("https://www.strava.com/api/v3/activities/"+ data[i].id +"/zones?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(zone){
           console.log(zone);
         });
         $('table').append(tr);
