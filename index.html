@@ -9,9 +9,19 @@
     var tr;
     for (var i = 0; i < data.length; i++) {
         tr = $('<tr/>');
-        tr.append("<td>" + data[i].id + "</td>");
-        tr.append("<td>" + data[i].distance + "</td>");
-        tr.append("<td>" + data[i].moving_time + "</td>");
+        tr.append("<td>" + data[i].start_date + "</td>");
+        tr.append("<td>" + data[i].name + "</td>");
+        tr.append("<td>1</td>");
+        tr.append("<td>" + (data[i].distance)/1000 + "</td>");
+        tr.append("<td>" + Math.round(data[i].total_elevation_gain) + "</td>");
+        tr.append("<td></td>");
+        tr.append("<td>" + Math.round(data[i].moving_time/60) + "</td>");
+        var pace = 1000/(60*(data[i].average_speed));
+        var pacesec = (pace - Math.floor(pace))*60;
+        tr.append("<td>" + "0:" + Math.floor(pace) + ":" + Math.round(pacesec) + "</td>");
+        tr.append("<td>" + Math.round(data[i].average_heartrate) + "</td>");
+        tr.append("<td>" + Math.round(data[i].max_heartrate) + "</td>");
+        tr.append("<td></td>");
         $('table').append(tr);
     }
     
@@ -25,9 +35,17 @@
 <table id="myTable">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>Datum</th>
+            <th>Name</th>
+            <th>1</th>
             <th>Distance</th>
+            <th>Elevation</th>
+            <th>space</th>
             <th>Time</th>
+            <th>Pace</th>
+            <th>Avg_HR</th>
+            <th>Max_HR</th>
+            <th>BORG!</th>
         </tr>
     </thead>
     
