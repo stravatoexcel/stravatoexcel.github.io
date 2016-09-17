@@ -8,7 +8,7 @@
   $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(data){
     var tr;
     for (var i = 0; i < data.length; i++) {
-        console.log(data[i]);
+        var data = data;
         $.getJSON("https://www.strava.com/api/v3/activities/"+ data[i].id +"/zones?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(zone){
           var zone1 = Math.round(zone[0].distribution_buckets[0].time/60);
           var zone2 = Math.round(zone[0].distribution_buckets[1].time/60);
