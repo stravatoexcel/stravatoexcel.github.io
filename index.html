@@ -25,10 +25,16 @@
         tr.append("<td>" + Math.round(data[i].max_heartrate) + "</td>");
         tr.append("<td></td>");
         $.getJSON("https://www.strava.com/api/v3/activities/"+ data[i].id +"/zones?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(zone){
-          var zone1 = zone[0].distribution_buckets[0].time;
-          console.log(zone1);
-
-          console.log(zone);
+          var zone1 = Math.round(zone[0].distribution_buckets[0].time/60);
+          var zone2 = Math.round(zone[0].distribution_buckets[1].time/60);
+          var zone3 = Math.round(zone[0].distribution_buckets[2].time/60);
+          var zone4 = Math.round(zone[0].distribution_buckets[3].time/60);
+          var zone5 = Math.round(zone[0].distribution_buckets[4].time/60);
+          tr.append("<td>" + zone1 + "</td>");
+          tr.append("<td>" + zone2 + "</td>");
+          tr.append("<td>" + zone3 + "</td>");
+          tr.append("<td>" + zone4 + "</td>");
+          tr.append("<td>" + zone5 + "</td>");
         });
         $('table').append(tr);
     }
@@ -54,6 +60,11 @@
             <th>Avg_HR</th>
             <th>Max_HR</th>
             <th>BORG!</th>
+            <th>Zone1</th>
+            <th>Zone2</th>
+            <th>Zone3</th>
+            <th>Zone4</th>
+            <th>Zone5</th>
         </tr>
     </thead>
     
