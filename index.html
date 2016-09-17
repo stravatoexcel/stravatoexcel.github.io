@@ -12,7 +12,8 @@
         tr.append("<td>" + data[i].start_date + "</td>");
         tr.append("<td>" + data[i].name + "</td>");
         tr.append("<td>1</td>");
-        tr.append("<td>" + (data[i].distance)/1000.toFixed(2) + "</td>");
+        var kilometer = data[i].distance)/1000;
+        tr.append("<td>" + kilometer.toFixed(2) + "</td>");
         tr.append("<td>" + Math.round(data[i].total_elevation_gain) + "</td>");
         tr.append("<td></td>");
         tr.append("<td>" + Math.round(data[i].moving_time/60) + "</td>");
