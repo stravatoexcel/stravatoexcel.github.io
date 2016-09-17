@@ -6,14 +6,15 @@
 <script>
 
 $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(data){
-    var zonen = 0;
+    var daten = data;
+    var zonen = zone;
     for (var i = 0; i < data.length; i++) {
     var second = $.getJSON("https://www.strava.com/api/v3/activities/"+ data[i].id +"/zones?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(zone)           {
         zonen = zone;
     });
     $.when(second)
     .done(function(data, zone){
-        console.log(data);
+        console.log(daten);
         console.log(zonen);
     });
 
