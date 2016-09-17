@@ -46,7 +46,7 @@ $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1c
         var zone4 = Math.round(data[0].distribution_buckets[3].time/60);
         var zone5 = Math.round(data[0].distribution_buckets[4].time/60);
 
-        tr.append("<td>" + zone1 + "</td>");
+        tr.append("<td class="zone">" + zone1 + "</td>");
         tr.append("<td>" + zone2 + "</td>");
         tr.append("<td>" + zone3 + "</td>");
         tr.append("<td>" + zone4 + "</td>");
