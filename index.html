@@ -7,6 +7,7 @@
 
 $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(data){
     var zonen = 0;
+    for (var i = 0; i < data.length; i++) {
     var second = $.getJSON("https://www.strava.com/api/v3/activities/"+ data[i].id +"/zones?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(zone)           {
         zonen = zone;
     });
@@ -15,6 +16,8 @@ $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1c
         console.log(data);
         console.log(zone);
     });
+
+    }
 });
  
   /*$.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(data){
