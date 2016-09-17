@@ -30,6 +30,7 @@ $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1c
         tr.append("<td>" + Math.round(data[i].average_heartrate) + "</td>");
         tr.append("<td>" + Math.round(data[i].max_heartrate) + "</td>");
         tr.append("<td></td>");
+        $('table').append(tr); 
 
 
     var second = $.getJSON("https://www.strava.com/api/v3/activities/"+ data[i].id +"/zones?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(zone)           {
@@ -51,6 +52,7 @@ $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1c
         tr.append("<td>" + zone3 + "</td>");
         tr.append("<td>" + zone4 + "</td>");
         tr.append("<td>" + zone5 + "</td>");
+        $('table').append(tr); 
         
     });
 
