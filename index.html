@@ -9,7 +9,9 @@
     var tr;
     for (var i = 0; i < data.length; i++) {
         tr = $('<tr/>');
-        tr.append("<td>" + data[i].start_date + "</td>");
+        var month = data[i].start_date.getMonth();
+        var day = data[i].start_date.getDate();
+        tr.append("<td>"+ month + " - " + day +"</td>");
         tr.append("<td>" + data[i].name + "</td>");
         tr.append("<td>1</td>");
         var kilometer = (data[i].distance)/1000;
