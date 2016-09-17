@@ -6,44 +6,45 @@
 <script>
 
 $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(data){
-    var daten = data;
     var zonen = 0;
 
     var tr;
     for (var i = 0; i < data.length; i++) {
+        
+        tr = $('<tr/>');
+        var date = new Date(data[i].start_date);
+        var month = date.getMonth()+1;
+        var day = date.getDate();
+        tr.append("<td>"+ month + " - " + day +"</td>");
+        tr.append("<td>" + data[i].name + "</td>");
+        tr.append("<td>1</td>");
+        var kilometer = (data[i].distance)/1000;
+        var km = kilometer.toFixed(2);
+        tr.append("<td>" + km + "</td>");
+        tr.append("<td>" + Math.round(data[i].total_elevation_gain) + "</td>");
+        tr.append("<td></td>");
+        tr.append("<td>" + Math.round(data[i].moving_time/60) + "</td>");
+        var pace = 1000/(60*(data[i].average_speed));
+        var pacesec = (pace - Math.floor(pace))*60;
+        tr.append("<td>" + "0:" + Math.floor(pace) + ":" + Math.round(pacesec) + "</td>");
+        tr.append("<td>" + Math.round(data[i].average_heartrate) + "</td>");
+        tr.append("<td>" + Math.round(data[i].max_heartrate) + "</td>");
+        tr.append("<td></td>");
+
+
     var second = $.getJSON("https://www.strava.com/api/v3/activities/"+ data[i].id +"/zones?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(zone)           {
         zonen = zone;
     });
     $.when(second)
     .done(function(data, zone){
         console.log(data);
-        console.log(zonen);
+        console.log(zone);
 
-        tr = $('<tr/>');
-        var date = new Date(daten[i].start_date);
-        var month = date.getMonth()+1;
-        var day = date.getDate();
-        tr.append("<td>"+ month + " - " + day +"</td>");
-        tr.append("<td>" + daten[i].name + "</td>");
-        tr.append("<td>1</td>");
-        var kilometer = (daten[i].distance)/1000;
-        var km = kilometer.toFixed(2);
-        tr.append("<td>" + km + "</td>");
-        tr.append("<td>" + Math.round(daten[i].total_elevation_gain) + "</td>");
-        tr.append("<td></td>");
-        tr.append("<td>" + Math.round(daten[i].moving_time/60) + "</td>");
-        var pace = 1000/(60*(daten[i].average_speed));
-        var pacesec = (pace - Math.floor(pace))*60;
-        tr.append("<td>" + "0:" + Math.floor(pace) + ":" + Math.round(pacesec) + "</td>");
-        tr.append("<td>" + Math.round(daten[i].average_heartrate) + "</td>");
-        tr.append("<td>" + Math.round(daten[i].max_heartrate) + "</td>");
-        tr.append("<td></td>");
-
-        var zone1 = Math.round(zonen[0].distribution_buckets[0].time/60);
-        var zone2 = Math.round(zonen[0].distribution_buckets[1].time/60);
-        var zone3 = Math.round(zonen[0].distribution_buckets[2].time/60);
-        var zone4 = Math.round(zonen[0].distribution_buckets[3].time/60);
-        var zone5 = Math.round(zonen[0].distribution_buckets[4].time/60);
+        var zone1 = Math.round(zone[0].distribution_buckets[0].time/60);
+        var zone2 = Math.round(zone[0].distribution_buckets[1].time/60);
+        var zone3 = Math.round(zone[0].distribution_buckets[2].time/60);
+        var zone4 = Math.round(zone[0].distribution_buckets[3].time/60);
+        var zone5 = Math.round(zone[0].distribution_buckets[4].time/60);
 
         tr.append("<td>" + zone1 + "</td>");
         tr.append("<td>" + zone2 + "</td>");
