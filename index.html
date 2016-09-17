@@ -8,6 +8,7 @@
   $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(data){
     var tr;
     for (var i = 0; i < data.length; i++) {
+<<<<<<< HEAD
 
         $.getJSON("https://www.strava.com/api/v3/activities/"+ data[i].id +"/zones?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(zone){
           var zone1 = Math.round(zone[0].distribution_buckets[0].time/60);
@@ -17,6 +18,9 @@
           var zone5 = Math.round(zone[0].distribution_buckets[4].time/60);
           console.log(zone1);
 
+=======
+        var zone1 = 1;
+>>>>>>> origin/master
         tr = $('<tr/>');
         var date = new Date(data[i].start_date);
         var month = date.getMonth()+1;
