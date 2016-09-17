@@ -30,12 +30,12 @@
         var zone4;
         var zone5;
         $.getJSON("https://www.strava.com/api/v3/activities/"+ data[i].id +"/zones?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(zone){
-          zone1 = Math.round(zone[0].distribution_buckets[0].time/60);
-          zone2 = Math.round(zone[0].distribution_buckets[1].time/60);
-          zone3 = Math.round(zone[0].distribution_buckets[2].time/60);
-          zone4 = Math.round(zone[0].distribution_buckets[3].time/60);
-          zone5 = Math.round(zone[0].distribution_buckets[4].time/60);
-          console.log(zone1);
+          return zone1 = Math.round(zone[0].distribution_buckets[0].time/60);
+          return zone2 = Math.round(zone[0].distribution_buckets[1].time/60);
+          return zone3 = Math.round(zone[0].distribution_buckets[2].time/60);
+          return zone4 = Math.round(zone[0].distribution_buckets[3].time/60);
+          return zone5 = Math.round(zone[0].distribution_buckets[4].time/60);
+          console.log(zone1); 
         });
         tr.append("<td>" + zone1 + "</td>");
         tr.append("<td>" + zone2 + "</td>");
