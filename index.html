@@ -8,7 +8,7 @@
   $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(data){
     var tr;
     for (var i = 0; i < data.length; i++) {
-        var zone1 = 0;
+        var zone1 = 1;
         tr = $('<tr/>');
         var date = new Date(data[i].start_date);
         var month = date.getMonth()+1;
