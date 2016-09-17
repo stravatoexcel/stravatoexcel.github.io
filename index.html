@@ -9,8 +9,9 @@
     var tr;
     for (var i = 0; i < data.length; i++) {
         tr = $('<tr/>');
-        var month = data[i].start_date.getMonth();
-        var day = data[i].start_date.getDate();
+        var date = data[i].start_date;
+        var month = date.getMonth();
+        var day = date.getDate();
         tr.append("<td>"+ month + " - " + day +"</td>");
         tr.append("<td>" + data[i].name + "</td>");
         tr.append("<td>1</td>");
