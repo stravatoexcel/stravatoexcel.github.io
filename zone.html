@@ -27,9 +27,6 @@ $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1c
         $('table').append(tr);
 		});
 
-		$.when(wait).done(function(){
-			$.delay(50);
-		});
 		$delay(50);
 	}
 });
