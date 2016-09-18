@@ -11,38 +11,34 @@ $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1c
     var tr;
     for (var i = 0; i < data.length; i++) {
 
-        tr = $('<tr/>');
+
         var date = new Date(data[i].start_date);
         var month = date.getMonth()+1;
         var day = date.getDate();
-        tr.append("<td>"+ month + " - " + day +"</td>");
-        tr.append("<td>" + data[i].name + "</td>");
-        tr.append("<td>1</td>");
+
+        var name = data[i].name;
+       
         var kilometer = (data[i].distance)/1000;
         var km = kilometer.toFixed(2);
-        tr.append("<td>" + km + "</td>");
-        tr.append("<td>" + Math.round(data[i].total_elevation_gain) + "</td>");
-        tr.append("<td></td>");
-        tr.append("<td>" + Math.round(data[i].moving_time/60) + "</td>");
+        
+        var elevation = Math.round(data[i].total_elevation_gain);
+
+        var time = Math.round(data[i].moving_time/60);
+
         var pace = 1000/(60*(data[i].average_speed));
         var pacesec = (pace - Math.floor(pace))*60;
-        tr.append("<td>" + "0:" + Math.floor(pace) + ":" + Math.round(pacesec) + "</td>");
-        tr.append("<td>" + Math.round(data[i].average_heartrate) + "</td>");
-        tr.append("<td>" + Math.round(data[i].max_heartrate) + "</td>");
-        tr.append("<td></td>");
-        //$('table').append(tr); 
 
-        
-        $.ajax({
-            datatype:  'json',
-            url: "https://www.strava.com/api/v3/activities/"+ data[i].id +"/zones?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?",
-            async: false,
-            data: zone, 
-            success: function(zone) {
-                zonen = zone;
-            }
-        });
- 
+        var avg_hr = Math.round(data[i].average_heartrate);
+
+        var max_hr = Math.round(data[i].max_heartrate);
+
+
+
+    var second = $.getJSON("https://www.strava.com/api/v3/activities/"+ data[i].id +"/zones?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?", function(zone)           {
+        zonen = zone;
+    });
+    $.when(second)
+    .done(function(data, zone){
         console.log(data);
         console.log(zone);
 
@@ -52,6 +48,19 @@ $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1c
         var zone4 = Math.round(data[0].distribution_buckets[3].time/60);
         var zone5 = Math.round(data[0].distribution_buckets[4].time/60);
 
+        tr = $('<tr/>');
+        tr.append("<td>"+ month + " - " + day +"</td>");
+        tr.append("<td>" + name + "</td>");
+        tr.append("<td>1</td>");
+        tr.append("<td>" + km + "</td>");
+        tr.append("<td>" + elevation + "</td>");
+        tr.append("<td></td>");
+        tr.append("<td>" + time + "</td>");
+         tr.append("<td>" + "0:" + Math.floor(pace) + ":" + Math.round(pacesec) + "</td>");
+        tr.append("<td>" + avg_hr + "</td>");
+        tr.append("<td>" + max_hr + "</td>");
+        tr.append("<td></td>");
+
         tr.append("<td>" + zone1 + "</td>");
         tr.append("<td>" + zone2 + "</td>");
         tr.append("<td>" + zone3 + "</td>");
@@ -59,6 +68,9 @@ $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1c
         tr.append("<td>" + zone5 + "</td>");
         $('table').append(tr); 
         
+    });
+
+    /* $('table').append(tr); */
 
     }
 });
