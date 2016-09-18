@@ -34,6 +34,7 @@ $.getJSON("https://www.strava.com/api/v3/athlete/activities?access_token=7bdff1c
 
         
         $.ajax({
+            type: 'GET',
             datatype:  'jsonp',
             url: "https://www.strava.com/api/v3/activities/"+ data[i].id +"/zones?access_token=7bdff1ce8562906d40570028677dbbc4d147769a&callback=?",
             async: false,
